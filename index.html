@@ -566,7 +566,7 @@
         { id: "hardware", title: "2) Hardware installation", subtitle: "Ethernet, power, and network readiness for NxView." },
         { id: "nxview", title: "3) NxView basics", subtitle: "Open the device and validate depth/3D stability." },
         { id: "grab3d", title: "4) Getting 3D data (NxLib)", subtitle: "Minimum pipeline to produce a PointMap (H×W×3)." },
-        { id: "codes", title: "5) Python codes", subtitle: "Ready-to-use recipes from camera open to box processing." }
+        { id: "codes", title: "5) Python codes", subtitle: "Ready-to-use recipes from obtaining parameters to box processing." }
       ];
 
       const stripComments = (text) => {
@@ -626,7 +626,7 @@
           id: "b",
           step: "B",
           meta: "Python / Detection",
-          badge: "Base",
+          badge: "Detection",
           title: "DisparityMap → PointMap",
           subtitle: "Minimum pipeline to obtain a float32 PointMap",
           filename: "Disparity_Map&Point_Map",
@@ -638,7 +638,7 @@
           id: "c",
           step: "C",
           meta: "Python / Estimation",
-          badge: "Detection",
+          badge: "Estimation",
           title: "Box coordinates",
           subtitle: "Coordinates: x,y,z, and angle from the box whether on conveyor or on pellets",
           filename: "Box_identif",
