@@ -60,6 +60,7 @@
   <div class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden" x-show="showSidebar" x-cloak @click.self="showSidebar = false"></div>
 
   <div class="min-h-screen flex flex-col">
+    <!-- HEADER -->
     <header class="sticky top-0 z-50 w-full border-b border-slate-200/70 dark:border-slate-800/70 bg-white/85 dark:bg-slate-950/70 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 flex items-center gap-3">
         <button
@@ -119,6 +120,8 @@
 
     <div class="flex-1">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 md:grid md:grid-cols-[290px_minmax(0,1fr)] md:gap-10">
+
+        <!-- SIDEBAR -->
         <aside
           class="fixed inset-y-0 left-0 z-50 w-5/6 max-w-xs -translate-x-full transition md:static md:z-auto md:w-auto md:max-w-none md:translate-x-0 md:block border-r border-slate-200/70 dark:border-slate-800/70 bg-white dark:bg-slate-950 md:bg-transparent md:dark:bg-transparent"
           :class="{ 'translate-x-0': showSidebar }"
@@ -165,13 +168,24 @@
               <li class="pt-4">
                 <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Recipes</div>
               </li>
-
               <li>
                 <a class="navlink" :class="{ 'active': route==='codes' }" href="#/codes" @click="showSidebar=false">
                   <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current opacity-80" aria-hidden="true">
                     <path d="M8.7 16.3 4.4 12l4.3-4.3L7.3 6.3 1.6 12l5.7 5.7 1.4-1.4zm6.6 0 1.4 1.4L22.4 12l-5.7-5.7-1.4 1.4L19.6 12l-4.3 4.3z"></path>
                   </svg>
                   Python codes
+                </a>
+              </li>
+
+              <li class="pt-4">
+                <div class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Visual</div>
+              </li>
+              <li>
+                <a class="navlink" :class="{ 'active': route==='images' }" href="#/images" @click="showSidebar=false">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current opacity-80" aria-hidden="true">
+                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-1.1 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path>
+                  </svg>
+                  Guide Images
                 </a>
               </li>
 
@@ -198,7 +212,10 @@
           </nav>
         </aside>
 
+        <!-- MAIN CONTENT -->
         <main class="py-6 md:py-8">
+
+          <!-- PAGE HERO -->
           <div class="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 p-6 sm:p-8">
             <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
             <div class="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"></div>
@@ -254,7 +271,10 @@
             </div>
           </div>
 
+          <!-- PAGE SECTIONS -->
           <div class="mt-6 space-y-8" id="page-content">
+
+            <!-- 1. SOFTWARE -->
             <section x-show="route==='software'" x-cloak class="space-y-6">
               <div class="grid gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
@@ -300,6 +320,7 @@
               </div>
             </section>
 
+            <!-- 2. HARDWARE -->
             <section x-show="route==='hardware'" x-cloak class="space-y-6">
               <div class="grid gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
@@ -343,6 +364,7 @@
               </div>
             </section>
 
+            <!-- 3. NXVIEW -->
             <section x-show="route==='nxview'" x-cloak class="space-y-6">
               <div class="grid gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
@@ -384,6 +406,7 @@
               </div>
             </section>
 
+            <!-- 4. GRAB 3D -->
             <section x-show="route==='grab3d'" x-cloak class="space-y-6">
               <div class="grid gap-4 lg:grid-cols-3">
                 <div class="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
@@ -428,10 +451,11 @@
               </div>
             </section>
 
+            <!-- 5. PYTHON CODES -->
             <section x-show="route==='codes'" x-cloak>
               <div class="container mx-auto px-0 py-2">
                 <main class="max-w-5xl mx-auto">
-                  
+
                   <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between mb-6">
                     <div class="flex-1">
                       <label class="text-xs font-mono font-semibold text-slate-500 uppercase">Search within code blocks</label>
@@ -482,7 +506,6 @@
                               <span x-text="item.badge"></span>
                             </span>
                           </div>
-
                           <div class="mt-1 font-semibold text-slate-900 dark:text-slate-100 truncate" x-text="item.title"></div>
                           <div class="text-xs text-slate-600 dark:text-slate-400 truncate" x-text="item.subtitle"></div>
                         </div>
@@ -494,7 +517,6 @@
                           >
                             Copy
                           </button>
-
                           <button
                             @click="open = !open"
                             class="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
@@ -513,13 +535,11 @@
                               Language: <span class="font-mono" x-text="item.lang"></span>
                             </div>
                           </div>
-
                           <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800">
                             <div class="code-bg p-4">
                               <pre class="pretty-scroll overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed text-slate-100 max-h-[680px]"><code x-text="item.code"></code></pre>
                             </div>
                           </div>
-
                           <div class="mt-3 flex items-center justify-between">
                             <div class="text-xs text-slate-500 dark:text-slate-400">Full code is displayed.</div>
                             <button
@@ -541,19 +561,58 @@
               </div>
             </section>
 
-            <footer class="pt-8 text-sm text-slate-500 dark:text-slate-400">
-              <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6">
-                <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div>© Voraus Robotik GmbH — Ensenso C57</div>
-                  <div class="flex items-center gap-2">
-                    <span>Last updated:</span>
-                    <span class="font-medium text-slate-700 dark:text-slate-300" x-text="lastUpdated"></span>
+            <!-- 6. IMAGES -->
+            <section x-show="route==='images'" x-cloak class="space-y-6">
+              <div class="grid gap-6 lg:grid-cols-2">
+
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
+                  <h2 class="text-xl font-semibold">Nx Interface</h2>
+                  <p class="mt-2 text-slate-600 dark:text-slate-300">
+                    This is how the Nx interface should look once the camera is properly connected and depth data is being rendered.
+                  </p>
+                  <div class="mt-4 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 min-h-48 flex items-center justify-center">
+                    <img src="Imag2.png" alt="Nx Interface screenshot" class="w-full object-contain"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col items-center gap-2 p-8 text-slate-400 dark:text-slate-600">
+                      <svg viewBox="0 0 24 24" class="h-10 w-10 fill-current opacity-40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-1.1 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
+                      <span class="text-sm">Imag2.png — place file next to this HTML</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </footer>
 
-          </div>
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-950">
+                  <h2 class="text-xl font-semibold">Box Detection Result</h2>
+                  <p class="mt-2 text-slate-600 dark:text-slate-300">
+                    Example of how the algorithm should identify boxes and overlay X, Y, Z coordinates with orientation.
+                  </p>
+                  <div class="mt-4 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 min-h-48 flex items-center justify-center">
+                    <img src="Imag1.png" alt="Box Detection Result screenshot" class="w-full object-contain"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col items-center gap-2 p-8 text-slate-400 dark:text-slate-600">
+                      <svg viewBox="0 0 24 24" class="h-10 w-10 fill-current opacity-40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-1.1 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
+                      <span class="text-sm">Imag1.png — place file next to this HTML</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+          </div><!-- end #page-content -->
+
+          <!-- FOOTER -->
+          <footer class="pt-8 text-sm text-slate-500 dark:text-slate-400">
+            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6">
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>© Voraus Robotik GmbH — Ensenso C57</div>
+                <div class="flex items-center gap-2">
+                  <span>Last updated:</span>
+                  <span class="font-medium text-slate-700 dark:text-slate-300" x-text="lastUpdated"></span>
+                </div>
+              </div>
+            </div>
+          </footer>
+
         </main>
       </div>
     </div>
@@ -561,12 +620,15 @@
 
   <script>
     function docsApp() {
+      // ── routes ──────────────────────────────────────────────────────────────
+      // FIX: "images" added to routes array so hash routing works correctly
       const routes = [
-        { id: "software", title: "1) Software installation", subtitle: "Install SDK, NxView, and NxLib to open the device." },
-        { id: "hardware", title: "2) Hardware installation", subtitle: "Ethernet, power, and network readiness for NxView." },
-        { id: "nxview", title: "3) NxView basics", subtitle: "Open the device and validate depth/3D stability." },
-        { id: "grab3d", title: "4) Getting 3D data (NxLib)", subtitle: "Minimum pipeline to produce a PointMap (H×W×3)." },
-        { id: "codes", title: "5) Python codes", subtitle: "Ready-to-use recipes from obtaining parameters to box processing." }
+        { id: "software", title: "1) Software installation",   subtitle: "Install SDK, NxView, and NxLib to open the device." },
+        { id: "hardware", title: "2) Hardware installation",   subtitle: "Ethernet, power, and network readiness for NxView." },
+        { id: "nxview",   title: "3) NxView basics",           subtitle: "Open the device and validate depth/3D stability." },
+        { id: "grab3d",   title: "4) Getting 3D data (NxLib)", subtitle: "Minimum pipeline to produce a PointMap (H×W×3)." },
+        { id: "codes",    title: "5) Python codes",            subtitle: "Ready-to-use recipes from obtaining parameters to box processing." },
+        { id: "images",   title: "6) Guide Images",            subtitle: "Visual reference for the Nx interface and box detection output." }
       ];
 
       const stripComments = (text) => {
@@ -590,24 +652,386 @@
       };
 
       const pillFor = (badge) => {
-        if (badge === "Base") return "bg-blue-500/10 text-blue-800 dark:bg-blue-500/15 dark:text-blue-200";
-        if (badge === "Detection") return "bg-fuchsia-500/10 text-fuchsia-800 dark:bg-fuchsia-500/15 dark:text-fuchsia-200";
+        if (badge === "Base")       return "bg-blue-500/10 text-blue-800 dark:bg-blue-500/15 dark:text-blue-200";
+        if (badge === "Detection")  return "bg-fuchsia-500/10 text-fuchsia-800 dark:bg-fuchsia-500/15 dark:text-fuchsia-200";
         if (badge === "Estimation") return "bg-emerald-500/10 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-200";
         return "bg-amber-500/10 text-amber-900 dark:bg-amber-500/15 dark:text-amber-200";
       };
 
       const dotFor = (badge) => {
-        if (badge === "Base") return "bg-blue-600 dark:bg-blue-400";
-        if (badge === "Detection") return "bg-fuchsia-600 dark:bg-fuchsia-400";
+        if (badge === "Base")       return "bg-blue-600 dark:bg-blue-400";
+        if (badge === "Detection")  return "bg-fuchsia-600 dark:bg-fuchsia-400";
         if (badge === "Estimation") return "bg-emerald-600 dark:bg-emerald-400";
         return "bg-amber-600 dark:bg-amber-400";
       };
 
-      const CODE_PARAMETERS = `inserta aqui`;
+      const CODE_PARAMETERS = `import numpy as np
 
-      const CODE_DISPARITY_POINTMAP_RAW = `inserta aqui`;
+import nxlib
 
-      const CODE_BOXES_COORDINATES = `inserta aqui`;
+from nxlib import constants as nxc
+ 
+SERIAL = "257868"
+ 
+def _first(x):
+    return x[0] if isinstance(x, (tuple, list)) else x
+def capture_pointmap(serial=SERIAL, image_set=0):
+
+    with nxlib.NxLib(), nxlib.Camera.from_serial(serial, [nxc.VAL_STRUCTURED_LIGHT, nxc.VAL_STEREO]) as cam:
+        nxlib.NxLibCommand(nxc.CMD_OPEN, params={nxc.ITM_CAMERAS: serial}).execute()
+        nxlib.NxLibCommand(nxc.CMD_CAPTURE, params={"ImageSet": image_set}).execute()
+        cam.rectify()
+        cam.compute_disparity_map()
+        cam.compute_point_map()
+        pm = cam[nxc.ITM_IMAGES][nxc.ITM_POINT_MAP]
+        info = pm.get_binary_data_info()
+        if len(info) >= 6:
+            w, h, c, bpe, is_float, ts = info[:6]
+        else:
+            raise RuntimeError(f"get_binary_data_info devolvió algo raro: {info}")
+        if w <= 0 or h <= 0 or c != 3 or (not is_float) or bpe != 4:
+            raise RuntimeError(f"PointMap inesperado: w={w}, h={h}, c={c}, float={is_float}, bpe={bpe}")
+        raw = _first(pm.get_binary_data())
+        xyz = np.frombuffer(raw, np.float32).reshape(h, w, 3)
+        return xyz, ts
+if __name__ == "__main__":
+    xyz, ts = capture_pointmap()
+    z = xyz[..., 2]
+    valid = np.isfinite(z)
+    print("PointMap shape (H,W,3):", xyz.shape, "timestamp:", ts)
+    print("Valid Z pixels:", int(valid.sum()), "/", int(valid.size))
+    if valid.any():
+        print("Z stats [min, mean, max]:", float(np.nanmin(z)), float(np.nanmean(z)), float(np.nanmax(z)))
+`;
+
+      const CODE_DISPARITY_POINTMAP_RAW = `import nxlib
+from nxlib import constants as nxc
+
+import numpy as np
+import cv2
+
+import matplotlib.pyplot as plt
+
+CAM_SERIAL = "257868"
+IMG_SIZE = [2500, 2500]
+PIXEL_SIZE_MM = 0.5
+IMAGE_SET = 1
+
+
+def capture_and_project(image_set: int = 0) -> (np.ndarray, np.ndarray):
+    with nxlib.NxLib(), nxlib.Camera.from_serial(CAM_SERIAL, [nxc.VAL_STRUCTURED_LIGHT, nxc.VAL_STEREO]) as cam:
+        with nxlib.NxLibCommand(nxc.CMD_CAPTURE, params={"ImageSet": image_set}) as cmd:
+            cmd.execute()
+        cam.rectify()
+        cam.compute_disparity_map()
+        cam.compute_point_map()
+        point_map = cam.get_point_map()
+
+        params = {
+            "PixelSize": PIXEL_SIZE_MM,
+            "Size": IMG_SIZE,
+            "ViewPose": {
+                "Rotation": {"Angle": 0, "Axis": [0, 0, 0]},
+                "Translation": [100, 0, 0]
+            }
+        }
+
+        with nxlib.NxLibCommand(nxc.CMD_RENDER_POINT_MAP, params=params) as cmd:
+            cmd.execute()
+            point_map_p = cmd.result()["Images"]["RenderPointMap"].get_binary_data()
+            texture_p = cmd.result()["Images"]["RenderPointMapTexture"].get_binary_data()[:, :, :3]
+            texture_p = np.ascontiguousarray(texture_p)
+
+            return point_map_p, texture_p, point_map
+
+projected_point_map, projected_texture, regular_point_map = capture_and_project(IMAGE_SET)
+
+x = (np.nanmin(projected_point_map[..., 0]), np.nanmax(projected_point_map[..., 0]))
+y = (np.nanmin(projected_point_map[..., 1]), np.nanmax(projected_point_map[..., 1]))
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6), constrained_layout=True)
+fig.suptitle("Depth Map Visualizations")
+
+im1 = ax1.imshow(regular_point_map[:, :, 2], cmap='viridis')
+ax1.set_title("Raw Capture")
+ax1.set_aspect('equal')
+ax1.set_xticks([])
+ax1.set_yticks([])
+cbar1 = fig.colorbar(im1, ax=ax1, fraction=0.046, pad=0.04)
+cbar1.set_label('Z [mm]')
+
+im2 = ax2.imshow(projected_point_map[:, :, 2], extent=[x[0], x[1], y[1], y[0]], cmap='viridis')
+ax2.set_title("Orthographic Projection")
+ax2.set_ylabel("Y [mm]")
+ax2.set_xlabel("X [mm]")
+ax2.set_aspect('equal')
+
+plt.show()
+
+PACKAGE_MIN_HEIGHT_MM = 100
+
+def prepare_height_mask(point_map: np.ndarray) -> (np.ndarray, np.ndarray):
+    height_only = -1 * point_map[:, :, 2]
+    height_only[np.isnan(height_only)] = 0
+    
+    _, mask = cv2.threshold(height_only, PACKAGE_MIN_HEIGHT_MM, 255, cv2.THRESH_BINARY)
+    mask = np.asarray(mask, dtype=np.uint8)
+    
+    kernel = np.ones((5, 5), np.uint8)
+    cleaned_mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    kernel = np.ones((7, 7), np.uint8)
+    cleaned_mask = cv2.morphologyEx(cleaned_mask, cv2.MORPH_CLOSE, kernel)
+    
+    return height_only, cleaned_mask
+
+height_image, cleaned_height_mask = prepare_height_mask(projected_point_map)
+
+masked_height_image = height_image * cleaned_height_mask / 255
+masked_height_image[masked_height_image == 0] = np.nan
+volume_dm3 = np.nansum(masked_height_image) * PIXEL_SIZE_MM * PIXEL_SIZE_MM / 1_000_000
+
+im1 = ax1.imshow(cleaned_height_mask, extent=(x[0], x[1], y[1], y[0]), cmap='viridis')
+ax1.set_title("Raw Height Mask")
+ax1.set_xlabel("X [mm]")
+ax1.set_ylabel("Y [mm]")
+ax1.set_aspect('equal')
+
+im2 = ax2.imshow(masked_height_image, extent=(x[0], x[1], y[1], y[0]), cmap='viridis')
+ax2.set_title("Sampled Height Values")
+ax2.set_xlabel("X [mm]")
+ax2.set_ylabel("Y [mm]")
+ax2.set_aspect('equal')
+
+plt.show()
+`;
+
+      const CODE_BOXES_COORDINATES = `import nxlib
+from nxlib import constants as nxc
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+CAM_SERIAL = "257868"
+IMG_SIZE = [6000, 6000]
+PIXEL_SIZE_MM = 0.5
+IMAGE_SET = 1
+
+TEXT_SCALE_LABEL = 2
+TEXT_SCALE_SUB = 1.5
+TEXT_THICK_BG = 6
+TEXT_THICK_FG = 4
+
+RENDER_TRANSLATION = [0, 0, 0]
+
+BELT_Z_EXPECTED_MM = -100.0
+BELT_Z_TOL_MM = 60.0
+BELT_PERCENTILE_FALLBACK = 15
+
+PALLET_MIN_HEIGHT_MM = 40.0
+BELT_MIN_HEIGHT_MM = 20.0
+BELT_MAX_HEIGHT_MM = 400.0
+
+BOX_L_TARGET_MM = 350.0
+BOX_W_TARGET_MM = 250.0
+BOX_H_TARGET_MM = 120.0
+TOL_L_MM = 80.0
+TOL_W_MM = 80.0
+TOL_H_MM = 220.0
+USE_VOLUME_FILTER = True
+VOL_TOL_PCT = 100.0
+MIN_AREA_MM2 = 5_000.0
+
+
+def capture_and_project(image_set: int = 0):
+    with nxlib.NxLib(), nxlib.Camera.from_serial(CAM_SERIAL, [nxc.VAL_STRUCTURED_LIGHT, nxc.VAL_STEREO]) as cam:
+        nxlib.NxLibCommand(nxc.CMD_CAPTURE, params={"ImageSet": image_set}).execute()
+        cam.rectify()
+        cam.compute_disparity_map()
+        cam.compute_point_map()
+
+        params = {
+            "PixelSize": PIXEL_SIZE_MM,
+            "Size": IMG_SIZE,
+            "ViewPose": {"Rotation": {"Angle": 0, "Axis": [0, 0, 0]}, "Translation": RENDER_TRANSLATION},
+        }
+        with nxlib.NxLibCommand(nxc.CMD_RENDER_POINT_MAP, params=params) as cmd:
+            cmd.execute()
+            pm = cmd.result()["Images"]["RenderPointMap"].get_binary_data()
+            tex = cmd.result()["Images"]["RenderPointMapTexture"].get_binary_data()[:, :, :3]
+            return pm, np.ascontiguousarray(tex)
+
+
+def prepare_height_mask_pallet(point_map: np.ndarray):
+    h = -point_map[..., 2]
+    h[np.isnan(h)] = 0
+    _, mask = cv2.threshold(h, PALLET_MIN_HEIGHT_MM, 255, cv2.THRESH_BINARY)
+    mask = mask.astype(np.uint8)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
+    return h, mask
+
+
+def prepare_height_mask_belt(point_map: np.ndarray):
+    X, Y, Z = point_map[..., 0], point_map[..., 1], point_map[..., 2]
+    valid = np.isfinite(X) & np.isfinite(Y) & np.isfinite(Z)
+
+    belt_cand = valid & (np.abs(Z - BELT_Z_EXPECTED_MM) <= BELT_Z_TOL_MM)
+    if np.count_nonzero(belt_cand) < 2000:
+        h_abs = -Z
+        h_thr = np.nanpercentile(h_abs[valid], BELT_PERCENTILE_FALLBACK)
+        belt_cand = valid & (h_abs <= h_thr)
+
+    x = X[belt_cand].reshape(-1)
+    y = Y[belt_cand].reshape(-1)
+    z = Z[belt_cand].reshape(-1)
+    A = np.c_[x, y, np.ones_like(x)]
+    a, b, c = np.linalg.lstsq(A, z, rcond=None)[0]
+    Z_plane = a * X + b * Y + c
+
+    h_rel = Z_plane - Z
+    h_rel[~valid] = 0
+
+    mask = ((h_rel > BELT_MIN_HEIGHT_MM) & (h_rel < BELT_MAX_HEIGHT_MM)).astype(np.uint8) * 255
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
+    return h_rel, mask
+
+
+def _within(v, target, tol):
+    return (target - tol) <= v <= (target + tol)
+
+
+def _to_uint8(img):
+    if img.dtype == np.uint8:
+        return img
+    return np.clip(img, 0, 255).astype(np.uint8)
+
+
+def _robust_center_xyz(point_map_xyz: np.ndarray, contour: np.ndarray, fallback_px: tuple):
+    cx_i, cy_i = fallback_px
+    xyz0 = point_map_xyz[cy_i, cx_i, :3]
+    if np.all(np.isfinite(xyz0)):
+        return xyz0
+
+    h, w = point_map_xyz.shape[:2]
+    m = np.zeros((h, w), np.uint8)
+    cv2.drawContours(m, [contour], -1, 255, -1)
+
+    ys, xs = np.where(m == 255)
+    if len(xs) == 0:
+        return None
+
+    pts = point_map_xyz[ys, xs, :3]
+    ok = np.isfinite(pts[:, 0]) & np.isfinite(pts[:, 1]) & np.isfinite(pts[:, 2])
+    pts = pts[ok]
+    if pts.shape[0] < 50:
+        return None
+
+    return np.median(pts, axis=0)
+
+
+def detect_boxes_multi(object_mask, height_img, point_map_p, texture_rgb, tag=""):
+    texture_rgb = _to_uint8(texture_rgb)
+    vis_bgr = cv2.cvtColor(texture_rgb, cv2.COLOR_RGB2BGR)
+
+    contours, _ = cv2.findContours(object_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    found = []
+    target_vol = BOX_L_TARGET_MM * BOX_W_TARGET_MM * BOX_H_TARGET_MM
+
+    for c in contours:
+        rect = cv2.minAreaRect(c)
+        (cx, cy), (rw, rh), angle = rect
+
+        angle_deg = angle
+        if rw < rh:
+            angle_deg = angle + 90.0
+        if angle_deg > 90.0:
+            angle_deg -= 180.0
+        if angle_deg <= -90.0:
+            angle_deg += 180.0
+
+        L_px, W_px = max(rw, rh), min(rw, rh)
+        L = L_px * PIXEL_SIZE_MM
+        W = W_px * PIXEL_SIZE_MM
+        if (L * W) < MIN_AREA_MM2:
+            continue
+
+        obj_mask = np.zeros_like(object_mask, dtype=np.uint8)
+        cv2.drawContours(obj_mask, [c], -1, color=1, thickness=-1)
+
+        h_vals = height_img * obj_mask
+        h_vals[h_vals == 0] = np.nan
+        H = float(np.nanmean(h_vals))
+        if not np.isfinite(H):
+            continue
+
+        ok1 = _within(L, BOX_L_TARGET_MM, TOL_L_MM) and _within(W, BOX_W_TARGET_MM, TOL_W_MM) and _within(H, BOX_H_TARGET_MM, TOL_H_MM)
+        ok2 = _within(L, BOX_W_TARGET_MM, TOL_W_MM) and _within(W, BOX_L_TARGET_MM, TOL_L_MM) and _within(H, BOX_H_TARGET_MM, TOL_H_MM)
+        if not (ok1 or ok2):
+            continue
+
+        vol = L * W * H
+        vol_err_pct = abs(vol - target_vol) / max(target_vol, 1e-9) * 100.0
+        if USE_VOLUME_FILTER and vol_err_pct > VOL_TOL_PCT:
+            continue
+
+        cx_i = int(np.clip(cx, 0, point_map_p.shape[1] - 1))
+        cy_i = int(np.clip(cy, 0, point_map_p.shape[0] - 1))
+        center_xyz = _robust_center_xyz(point_map_p, c, (cx_i, cy_i))
+        if center_xyz is None:
+            continue
+
+        found.append((rect, (cx_i, cy_i), center_xyz, angle_deg, vol_err_pct, tag))
+
+    for rect, (cx_i, cy_i), center_xyz, angle_deg, vol_err_pct, tag in found:
+        box_pts = np.intp(cv2.boxPoints(rect))
+        color = (0, 255, 0) if tag == "BELT" else (0, 200, 255)
+        cv2.drawContours(vis_bgr, [box_pts], 0, color, 6)
+        cv2.drawMarker(vis_bgr, (cx_i, cy_i), (255, 0, 0), cv2.MARKER_CROSS, 45, 3)
+
+        label = [f"X:{center_xyz[0]:.0f}", f"Y:{center_xyz[1]:.0f}", f"Z:{center_xyz[2]:.0f}"]
+        sub = f"Ang:{angle_deg:.1f}"
+        tx = int(np.clip(cx_i + 10, 0, vis_bgr.shape[1] - 10))
+        ty = int(np.clip(cy_i - 35, 25, vis_bgr.shape[0] - 10))
+        dy = 60
+
+        for i, line in enumerate(label):
+            y_line = ty + i * dy
+            cv2.putText(vis_bgr, line, (tx, y_line), cv2.FONT_HERSHEY_SIMPLEX, TEXT_SCALE_LABEL, (0, 0, 0), TEXT_THICK_BG, cv2.LINE_AA)
+            cv2.putText(vis_bgr, line, (tx, y_line), cv2.FONT_HERSHEY_SIMPLEX, TEXT_SCALE_LABEL, (255, 255, 255), TEXT_THICK_FG, cv2.LINE_AA)
+
+        cv2.putText(vis_bgr, sub, (tx, ty + len(label) * dy), cv2.FONT_HERSHEY_SIMPLEX, TEXT_SCALE_SUB, (0, 0, 0), TEXT_THICK_BG, cv2.LINE_AA)
+        cv2.putText(vis_bgr, sub, (tx, ty + len(label) * dy), cv2.FONT_HERSHEY_SIMPLEX, TEXT_SCALE_SUB, (255, 255, 255), TEXT_THICK_FG, cv2.LINE_AA)
+
+    vis_rgb = cv2.cvtColor(vis_bgr, cv2.COLOR_BGR2RGB)
+    return vis_rgb, found
+
+
+def print_boxes(found, header):
+    for i, (_, _, xyz, ang, _, tag) in enumerate(found, 1):
+        print("")
+
+
+pm, tex_rgb = capture_and_project(IMAGE_SET)
+
+h_pallet, mask_pallet_raw = prepare_height_mask_pallet(pm)
+h_belt, mask_belt = prepare_height_mask_belt(pm)
+
+mask_pallet = cv2.bitwise_and(mask_pallet_raw, cv2.bitwise_not(mask_belt))
+
+vis_pallet, found_pallet = detect_boxes_multi(mask_pallet, h_pallet, pm, tex_rgb, tag="PALLET")
+vis_all, found_belt = detect_boxes_multi(mask_belt, h_belt, pm, vis_pallet, tag="BELT")
+
+print_boxes(found_pallet, "PALLET BOXES")
+print_boxes(found_belt, "BELT BOXES")
+
+fig, ax = plt.subplots(1, 1, figsize=(12, 12), constrained_layout=True)
+ax.set_title(f"Boxes: pallet={len(found_pallet)} belt={len(found_belt)} total={len(found_pallet)+len(found_belt)}")
+ax.imshow(vis_all)
+ax.axis("off")
+ax.set_ylim(4200, 0)
+plt.show()
+`;
 
       const codes = [
         {
@@ -646,11 +1070,7 @@
           defaultOpen: false,
           code: stripComments(CODE_BOXES_COORDINATES)
         }
-      ].map((x) => ({
-        ...x,
-        pillClass: pillFor(x.badge),
-        dotClass: dotFor(x.badge)
-      }));
+      ].map((x) => ({ ...x, pillClass: pillFor(x.badge), dotClass: dotFor(x.badge) }));
 
       return {
         showSidebar: false,
@@ -675,29 +1095,27 @@
         get routeMeta() {
           return this.routes.find((r) => r.id === this.route) || this.routes[0];
         },
-        get routeTitle() { return this.routeMeta.title; },
+        get routeTitle()    { return this.routeMeta.title; },
         get routeSubtitle() { return this.routeMeta.subtitle; },
-
-        get routeIndex() { return this.routes.findIndex((r) => r.id === this.route); },
-        get hasPrev() { return this.routeIndex > 0; },
-        get hasNext() { return this.routeIndex < this.routes.length - 1; },
+        get routeIndex()    { return this.routes.findIndex((r) => r.id === this.route); },
+        get hasPrev()       { return this.routeIndex > 0; },
+        get hasNext()       { return this.routeIndex < this.routes.length - 1; },
 
         init() {
           window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
             this.prefersDark = e.matches;
             this.applyTheme();
           });
-
           window.addEventListener("hashchange", () => this.syncRouteFromHash());
           this.syncRouteFromHash();
           this.applyTheme();
         },
 
         syncRouteFromHash() {
-          const raw = (location.hash || "").trim();
+          const raw   = (location.hash || "").trim();
           const match = raw.match(/^#\/([a-z0-9_-]+)$/i);
-          const id = match ? match[1] : "software";
-          this.route = this.routes.some((r) => r.id === id) ? id : "software";
+          const id    = match ? match[1] : "software";
+          this.route  = this.routes.some((r) => r.id === id) ? id : "software";
           this.showSidebar = false;
           window.scrollTo({ top: 0, behavior: "smooth" });
         },
@@ -725,16 +1143,13 @@
         searchCurrentPage() {
           const q = (this.query || "").trim();
           if (!q) return;
-
           const container = document.querySelector("#page-content");
           if (!container) return;
-
-          const section = Array.from(container.querySelectorAll("section")).find((s) => s.offsetParent !== null && s.getBoundingClientRect().height > 0);
+          const section = Array.from(container.querySelectorAll("section"))
+            .find((s) => s.offsetParent !== null && s.getBoundingClientRect().height > 0);
           if (!section) return;
-
           const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT);
           const needle = q.toLowerCase();
-
           let node;
           while ((node = walker.nextNode())) {
             const hay = (node.nodeValue || "").toLowerCase();
@@ -787,8 +1202,8 @@
         findInCodes() {
           const q = (this.codeSearch || "").trim().toLowerCase();
           if (!q) return;
-
-          const codeNodes = Array.from(document.querySelectorAll("section code")).filter((el) => el.offsetParent !== null);
+          const codeNodes = Array.from(document.querySelectorAll("section code"))
+            .filter((el) => el.offsetParent !== null);
           for (const node of codeNodes) {
             const txt = (node.innerText || "").toLowerCase();
             if (txt.includes(q)) {
@@ -802,5 +1217,6 @@
       };
     }
   </script>
+
 </body>
 </html>
